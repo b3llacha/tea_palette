@@ -1,6 +1,6 @@
 # Tea Palette
 
-Bella Cha’s consumer product case study portfolio. Cream paper, blue porcelain drawings, searchable studies, and an illustrated border follow the user-supplied visual reference. No generated illustrations are used.
+Bella Cha’s consumer product case study portfolio. Cream paper, blue porcelain drawings, searchable studies, and an illustrated border follow the user-supplied visual reference. Supplied artwork defines the visual identity.
 
 ## Local preview and build
 
@@ -30,4 +30,4 @@ Impeccable’s optimize, clarify, colorize, animate, and harden guidance informe
 
 ## Branded vessels
 
-Individual vessels use the newer owner-supplied green tea sheet and colorful cup sheet, with official company marks positioned on each ceramic face. Original sheets stay in assets; optimized crops and self-hosted logos ship in the build. The Disney+ porcelain bowl remains the site icon. Logo sources are recorded in assets/logos/SOURCES.md. Earlier asset measurements describe the initial porcelain version.
+Individual vessels use the newer owner-supplied green tea sheet and colorful cup sheet, with official company marks integrated on each ceramic face. The Disney+ cup was edited with the image-editing tool to clean the watermark and center the mark; its edited PNG source is retained in assets, and the transparent WebP ships from assets/components. Original sheets stay in assets; optimized crops and self-hosted logos ship in the build. The Disney+ porcelain bowl remains the site icon. Logo sources are recorded in assets/logos/SOURCES.md. Earlier asset measurements describe the initial porcelain version.

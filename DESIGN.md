@@ -25,3 +25,5 @@ The four study vessels now use individual crops from the user’s colorful cup s
 Logos are transparent, unbacked marks with zero rotation, positioned at the center of each vessel’s front face. App-icon tiles and cream medallions have been removed.
 
 Each branded vessel is now a self-contained SVG image in assets/components, with original cup artwork and company mark embedded. Mark placement is centered on the ceramic body (excluding its handle and spout), in the original image coordinates. There are no positioned logo elements in the page.
+
+The Disney+ cup was edited from the supplied artwork to remove the visible stock watermark and integrate a centered white Disney+ mark. It is now a transparent raster asset, not a page overlay; the site icon remains the original porcelain bowl.
