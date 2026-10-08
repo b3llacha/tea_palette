@@ -17,3 +17,5 @@ Four open columns on desktop; a two-by-two vessel collection on phones. Study se
 ## Detector exception
 
 The Impeccable manual detector reported one warning: cream/beige background. This is an intentional, narrowly documented exception: the user supplied and explicitly requested a cream porcelain reference. Changing the background would conflict with the brief. No other findings were reported.
+
+The Disney+ study’s supplied porcelain bowl is also the site mark in the header, footer, and browser tab, as requested by the user.
