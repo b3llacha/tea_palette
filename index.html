@@ -5,28 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Tea Palette by Bella Cha. A collection of consumer product design case studies, steeped in curiosity and refined with intention.">
   <link rel="icon" type="image/webp" href="assets/optimized/disney-bowl.webp">
-  <meta name="theme-color" content="#fcf4ed">
+  <meta name="theme-color" content="#efeeeb">
   <title>Tea Palette | Refining Taste in Consumer Products: A Case Study Portfolio</title>
 
-  <link rel="preload" href="assets/fonts/dm-serif-display.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/dm-sans.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
 <body data-view="home">
-<a class="skip" href="#collection">Skip to case studies</a>
-<header><button class="brand" data-home aria-label="Tea Palette home"><span class="porcelain-mark" aria-hidden="true"></span><span>tea palette</span></button><nav aria-label="Main navigation"><button data-home>Case studies</button><button id="about-button" aria-pressed="false">About Bella</button><button id="contact-button" aria-pressed="false">Contact</button></nav></header>
+<a class="skip" href="#work-index">Skip to selected work</a>
+<header class="site-header"><button class="brand" data-home aria-label="Tea Palette home"><img src="assets/optimized/disney-bowl.webp" width="38" height="31" alt=""><span><h1>tea palette</h1><span class="tagline">refining product taste</span></span></button></header>
 <main>
-<section class="collection" id="collection" aria-label="Case study collection">
- <div class="collection-heading"><h1>Refining taste.</h1><p>Consumer product design, thoughtfully reconsidered.</p><label class="search-label" for="study-search">Find a case study</label><div class="search"><input id="study-search" type="search" maxlength="120" placeholder="Try a product or topic, like onboarding" autocomplete="off"><img src="assets/optimized/search.webp" width="31" height="31" alt=""><button id="clear-search" hidden aria-label="Clear search">Clear</button></div></div>
- <div class="tea-grid">
- <article class="tea-card" data-key="beli"><button class="vessel" data-case="beli" aria-label="Open Beli case study" aria-pressed="false" aria-controls="detail-panel"><span class="porcelain-art branded-art"><img class="cup-art" src="assets/components/beli-branded-final.svg" alt="Green hand-drawn kettle with Beli logo" width="320" height="292" decoding="async"></span><span class="outline-label">Read Beli</span></button><p>Discover, rank, and remember<br>a great meal.</p><small>Discovery & ranking</small></article>
- <article class="tea-card" data-key="disney"><button class="vessel" data-case="disney" aria-label="Open Disney Plus case study" aria-pressed="false" aria-controls="detail-panel"><span class="porcelain-art branded-art"><img class="cup-art" src="assets/components/disney-cup-clean.webp" alt="Blue illustrated teacup with centered Disney Plus logo" width="480" height="346" decoding="async"></span><span class="outline-label">Read Disney+</span></button><p>A little more magic.<br>A clearer path to watching.</p><small>Content discovery</small></article>
- <article class="tea-card" data-key="duolingo"><button class="vessel" data-case="duolingo" aria-label="Open Duolingo case study" aria-pressed="false" aria-controls="detail-panel"><span class="porcelain-art branded-art"><img class="cup-art" src="assets/components/duolingo-branded-final.svg" alt="Green hand-drawn mug with Duolingo logo" width="320" height="288" decoding="async"></span><span class="outline-label">Read Duolingo</span></button><p>Small steps toward<br>a world of possibility.</p><small>Onboarding & learning</small></article>
- <article class="tea-card" data-key="trufru"><button class="vessel" data-case="trufru" aria-label="Open TruFru case study" aria-pressed="false" aria-controls="detail-panel"><span class="porcelain-art branded-art"><img class="cup-art" src="assets/components/trufru-branded.svg" alt="Pink floral mug with TruFru logo" width="320" height="304" decoding="async"></span><span class="outline-label">Read TruFru</span></button><p>A playful product.<br>A more delightful experience.</p><small>Brand & shopping</small></article>
- </div><div id="no-results" hidden><p>No matching studies.</p><p>Try a product name or a topic such as discovery.</p><button id="reset-search" class="outline-label">Show all four studies</button></div>
- <p class="collection-blurb">Product teardowns & redesigns by Bella Cha.<br><span>Simplicity · Consistency · Usability</span></p>
-</section>
-<aside class="detail-panel" id="detail-panel" aria-label="Case study details" hidden><div class="panel-toolbar"><button id="back-button">Back to studies</button><div class="study-navigation"><button id="previous-button" aria-label="Previous case study">Previous</button><span id="case-counter"></span><button id="next-button" aria-label="Next case study">Next</button></div></div><div id="panel-content"></div></aside>
+ <aside class="sidebar">
+  <nav class="personal-links" aria-label="About and contact"><button id="about-button" aria-pressed="false">About</button><a href="#contact" data-contact="email" aria-describedby="contact-note">Email<span class="pending-dot" aria-hidden="true"></span></a><a href="#contact" data-contact="linkedin" aria-describedby="contact-note">LinkedIn<span class="pending-dot" aria-hidden="true"></span></a></nav>
+  <p id="contact-note" class="sr-only">Contact links have not been added yet. Opens contact information.</p>
+  <section class="work-index" id="work-index" aria-labelledby="work-title"><h2 id="work-title">Selected work</h2><ul>
+   <li><button data-case="beli" aria-pressed="false" aria-controls="detail-panel">Beli<span>discovery & ranking</span></button></li>
+   <li><button data-case="disney" aria-pressed="false" aria-controls="detail-panel">Disney+<span>content discovery</span></button></li>
+   <li><button data-case="duolingo" aria-pressed="false" aria-controls="detail-panel">Duolingo<span>onboarding & learning</span></button></li>
+   <li><button data-case="trufru" aria-pressed="false" aria-controls="detail-panel">TruFru<span>brand & shopping</span></button></li>
+  </ul></section>
+ </aside>
+ <section class="studio" aria-label="Tea Palette case study collection">
+  <div class="tea-table" id="tea-table">
+   <button class="vessel beli" data-case="beli" aria-label="Open Beli case study" aria-pressed="false" aria-controls="detail-panel"><img src="assets/components/beli-branded-final.svg" width="320" height="292" alt="Green hand-drawn kettle with Beli logo"><span>Read Beli</span></button>
+   <button class="vessel disney" data-case="disney" aria-label="Open Disney Plus case study" aria-pressed="false" aria-controls="detail-panel"><img src="assets/components/disney-cup-clean.webp" width="480" height="346" alt="Blue illustrated cup with centered Disney Plus logo"><span>Read Disney+</span></button>
+   <button class="vessel duolingo" data-case="duolingo" aria-label="Open Duolingo case study" aria-pressed="false" aria-controls="detail-panel"><img src="assets/components/duolingo-branded-final.svg" width="320" height="288" alt="Green hand-drawn mug with Duolingo logo"><span>Read Duolingo</span></button>
+   <button class="vessel trufru" data-case="trufru" aria-label="Open TruFru case study" aria-pressed="false" aria-controls="detail-panel"><img src="assets/components/trufru-branded.svg" width="320" height="304" alt="Pink floral mug with TruFru logo"><span>Read TruFru</span></button>
+   <img class="found-object tea-bag" src="assets/optimized/scatter-teabag.webp" width="150" height="386" alt="" aria-hidden="true">
+   <img class="found-object leaves" src="assets/optimized/scatter-leaves.webp" width="220" height="188" alt="" aria-hidden="true">
+   <img class="found-object honey" src="assets/optimized/scatter-honey.webp" width="280" height="113" alt="" aria-hidden="true">
+   <img class="found-object strainer" src="assets/optimized/scatter-strainer.webp" width="210" height="210" alt="" aria-hidden="true">
+   <img class="found-object tea-tin" src="assets/optimized/scatter-teatin.webp" width="130" height="204" alt="" aria-hidden="true">
+  </div>
+  <section class="detail-panel" id="detail-panel" aria-label="Portfolio details" hidden><div class="panel-toolbar"><button id="back-button">Back to collection</button><div class="study-navigation"><button id="previous-button" aria-label="Previous case study">Previous</button><span id="case-counter"></span><button id="next-button" aria-label="Next case study">Next</button></div></div><div id="panel-content"></div></section>
+ </section>
 </main>
-<footer><div class="porcelain-border" aria-hidden="true"></div><span>Bella Cha<br><small>LinkedIn · Email · Résumé — not added yet</small></span><button class="footer-brand" data-home><span class="porcelain-mark" aria-hidden="true"></span>tea palette</button><span class="footer-note">A fresh perspective<br>in every study.</span></footer><noscript><p class="no-script">These studies explore Beli’s restaurant discovery, Disney+ content browsing, Duolingo onboarding, and TruFru shopping. Enable JavaScript to open the full summaries and search. Slides, prototypes, and contact links have not been added yet.</p></noscript><div class="sr-only" id="announcement" aria-live="polite" aria-atomic="true"></div>
+<footer>© <span id="year">2026</span> tea palette</footer>
+<noscript><p class="no-script">Bella Cha’s case studies examine Beli discovery and ranking, Disney+ browsing, Duolingo onboarding, and TruFru shopping. Enable JavaScript to read summaries. Final slides, prototypes, and contact details have not been added yet.</p></noscript>
+<div class="sr-only" id="announcement" aria-live="polite" aria-atomic="true"></div>
 </body></html>

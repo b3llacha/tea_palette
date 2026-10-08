@@ -8,30 +8,13 @@ trufru:{name:'TruFru',label:'Brand & shopping',intro:'Translating a playful prod
 const order = Object.keys(studies);
 const content = document.querySelector('#panel-content');
 const panel = document.querySelector('#detail-panel');
-const search = document.querySelector('#study-search');
-const cards = [...document.querySelectorAll('.tea-card')];
-const vessels = [...document.querySelectorAll('.vessel')];
+const vessels = [...document.querySelectorAll('[data-case]')];
 const aboutButton = document.querySelector('#about-button');
-const contactButton = document.querySelector('#contact-button');
+const contactLinks = [...document.querySelectorAll('[data-contact]')];
 const announce = text => { document.querySelector('#announcement').textContent = text; };
 let selected = null;
 let returnTarget = null;
-const normalize = text => text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\+/g, ' plus ').replace(/[^\p{L}\p{N}]+/gu, ' ').trim();
 const escapeHTML = text => text.replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-function filterStudies(notify = false) {
-  const tokens = normalize(search.value).split(/\s+/).filter(Boolean);
-  let count = 0;
-  cards.forEach(card => {
-    const study = studies[card.dataset.key];
-    const terms = normalize(`${study.name} ${study.focus} ${study.intro} ${study.description} ${study.format} ${card.dataset.key === 'trufru' ? 'tru fru' : ''}`);
-    const match = tokens.every(token => terms.includes(token));
-    card.hidden = document.body.dataset.view === 'home' && !match;
-    if (match) count++;
-  });
-  document.querySelector('#clear-search').hidden = !search.value;
-  document.querySelector('#no-results').hidden = count !== 0 || document.body.dataset.view !== 'home';
-  if (notify) announce(`${count} ${count === 1 ? 'study' : 'studies'} found.`);
-}
 function render(markup, message, focus = true) {
   content.innerHTML = markup;
   content.scrollTop = 0;
@@ -46,7 +29,7 @@ function render(markup, message, focus = true) {
 function updateSelection() {
   vessels.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.case === selected)));
   aboutButton.setAttribute('aria-pressed', String(document.body.dataset.view === 'about'));
-  contactButton.setAttribute('aria-pressed', String(document.body.dataset.view === 'contact'));
+  contactLinks.forEach(link => { if(document.body.dataset.view === 'contact') link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current'); });
 }
 function showHome({ returnFocus = false } = {}) {
   selected = null;
@@ -54,9 +37,9 @@ function showHome({ returnFocus = false } = {}) {
   delete document.body.dataset.study;
   panel.hidden = true;
   updateSelection();
-  filterStudies();
+
   announce('Tea Palette case study collection');
-  if (returnFocus) (returnTarget && !returnTarget.closest('[hidden]') ? returnTarget : search).focus();
+  if (returnFocus) (returnTarget && !returnTarget.closest('[hidden]') ? returnTarget : document.querySelector('[data-case]')).focus();
 }
 function openPanel(view, origin) {
   if (origin) returnTarget = origin;
@@ -64,7 +47,7 @@ function openPanel(view, origin) {
   panel.hidden = false;
   document.querySelector('.study-navigation').hidden = view !== 'study';
   updateSelection();
-  filterStudies();
+
 }
 function showStudy(key, origin, focus = true) {
   const study = studies[key];
@@ -98,13 +81,17 @@ function showContact(origin) {
 vessels.forEach(button => button.addEventListener('click', () => showStudy(button.dataset.case, button)));
 document.querySelectorAll('[data-home]').forEach(button => button.addEventListener('click', () => showHome()));
 aboutButton.addEventListener('click', () => showAbout(aboutButton));
-contactButton.addEventListener('click', () => showContact(contactButton));
+contactLinks.forEach(link => link.addEventListener('click', event => { event.preventDefault(); showContact(link); }));
 document.querySelector('#back-button').addEventListener('click', () => showHome({returnFocus:true}));
 document.querySelector('#previous-button').addEventListener('click', () => showStudy(order[(order.indexOf(selected)+order.length-1)%order.length], null, false));
 document.querySelector('#next-button').addEventListener('click', () => showStudy(order[(order.indexOf(selected)+1)%order.length], null, false));
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && document.body.dataset.view !== 'home') showHome({returnFocus:true});
 });
-search.addEventListener('input', () => filterStudies(true));
-for (const id of ['clear-search','reset-search']) document.querySelector(`#${id}`).addEventListener('click', () => { search.value = ''; filterStudies(true); search.focus(); });
+document.querySelector('#year').textContent = new Date().getFullYear();
+// The index and objects share one selection cue, without moving the paper's layout.
+vessels.forEach(button => {
+  for(const type of ['pointerenter','focus']) button.addEventListener(type, () => document.body.dataset.preview = button.dataset.case);
+  for(const type of ['pointerleave','blur']) button.addEventListener(type, () => delete document.body.dataset.preview);
+});
 showHome();

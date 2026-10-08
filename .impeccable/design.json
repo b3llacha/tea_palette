@@ -1,0 +1,210 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T01:52:01.508804+00:00",
+  "title": "Design System: Tea Palette",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "tonalRamp": [
+          "oklch(15% 0.004 90)",
+          "oklch(26% 0.004 90)",
+          "oklch(37% 0.004 90)",
+          "oklch(48% 0.004 90)",
+          "oklch(59% 0.004 90)",
+          "oklch(70% 0.004 90)",
+          "oklch(82% 0.004 90)",
+          "oklch(95% 0.004 90)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15% 0.013 150)",
+          "oklch(26% 0.013 150)",
+          "oklch(37% 0.013 150)",
+          "oklch(48% 0.013 150)",
+          "oklch(59% 0.013 150)",
+          "oklch(70% 0.013 150)",
+          "oklch(82% 0.013 150)",
+          "oklch(95% 0.013 150)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "tonalRamp": [
+          "oklch(15% 0.01 150)",
+          "oklch(26% 0.01 150)",
+          "oklch(37% 0.01 150)",
+          "oklch(48% 0.01 150)",
+          "oklch(59% 0.01 150)",
+          "oklch(70% 0.01 150)",
+          "oklch(82% 0.01 150)",
+          "oklch(95% 0.01 150)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Soft Rule",
+        "tonalRamp": [
+          "oklch(15% 0.008 130)",
+          "oklch(26% 0.008 130)",
+          "oklch(37% 0.008 130)",
+          "oklch(48% 0.008 130)",
+          "oklch(59% 0.008 130)",
+          "oklch(70% 0.008 130)",
+          "oklch(82% 0.008 130)",
+          "oklch(95% 0.008 130)"
+        ]
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Botanical Accent",
+        "tonalRamp": [
+          "oklch(15% 0.06 150)",
+          "oklch(26% 0.06 150)",
+          "oklch(37% 0.06 150)",
+          "oklch(48% 0.06 150)",
+          "oklch(59% 0.06 150)",
+          "oklch(70% 0.06 150)",
+          "oklch(82% 0.06 150)",
+          "oklch(95% 0.06 150)"
+        ]
+      },
+      "selection-bg": {
+        "role": "neutral",
+        "displayName": "Selection Paper",
+        "tonalRamp": [
+          "oklch(15% 0.017 130)",
+          "oklch(26% 0.017 130)",
+          "oklch(37% 0.017 130)",
+          "oklch(48% 0.017 130)",
+          "oklch(59% 0.017 130)",
+          "oklch(70% 0.017 130)",
+          "oklch(82% 0.017 130)",
+          "oklch(95% 0.017 130)"
+        ]
+      },
+      "selection-ink": {
+        "role": "neutral",
+        "displayName": "Selection Ink",
+        "tonalRamp": [
+          "oklch(15% 0.045 145)",
+          "oklch(26% 0.045 145)",
+          "oklch(37% 0.045 145)",
+          "oklch(48% 0.045 145)",
+          "oklch(59% 0.045 145)",
+          "oklch(70% 0.045 145)",
+          "oklch(82% 0.045 145)",
+          "oklch(95% 0.045 145)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "brand": {
+        "displayName": "Brand",
+        "purpose": "Compact identity; CSS requests 500 from a font face registered at 400."
+      },
+      "headline": {
+        "displayName": "Panel headline",
+        "purpose": "32px desktop; 28px at 700px and below."
+      },
+      "label": {
+        "displayName": "Secondary label",
+        "purpose": "14px labels; mobile vessel captions alone use 12px."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "vessel-settle",
+        "value": "transform 220ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Straighten and lift the pointed or focused vessel."
+      },
+      {
+        "name": "caption-reveal",
+        "value": "opacity 180ms ease",
+        "purpose": "Reveal a vessel caption."
+      },
+      {
+        "name": "panel-entrance",
+        "value": "280ms cubic-bezier(.16,1,.3,1)",
+        "purpose": "Opacity .7 to 1 and translateY(10px) to 0; skipped for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1400px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1000px"
+      },
+      {
+        "name": "mobile",
+        "value": "700px"
+      },
+      {
+        "name": "narrow-mobile",
+        "value": "380px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Personal navigation",
+      "kind": "nav",
+      "refersTo": "text-control",
+      "description": "Unboxed navigation with a 44px minimum touch height.",
+      "html": "<nav class=\"ds-nav\"><button class=\"ds-link\">About</button><a class=\"ds-link\" href=\"#contact\">Email</a><a class=\"ds-link\" href=\"#contact\">LinkedIn</a></nav>",
+      "css": ".ds-nav{display:flex;flex-direction:column;align-items:flex-start;font:16px/1.5 var(--sans,'DM Sans',Arial,sans-serif);color:var(--ink,#303732)}.ds-link{display:flex;align-items:center;min-height:44px;padding:4px 0;color:inherit;background:none;border:0;font:inherit;text-decoration:none;cursor:pointer}.ds-link:hover{text-decoration:underline;text-underline-offset:5px}.ds-link:focus-visible{outline:2px solid var(--accent,#365a45);outline-offset:5px}"
+    },
+    {
+      "name": "Selected study index",
+      "kind": "button",
+      "refersTo": "study-index-active",
+      "description": "Selected text route into a study.",
+      "html": "<button class=\"ds-link ds-selected\">Beli<span class=\"ds-topic\">discovery &amp; ranking</span></button>",
+      "css": ".ds-nav{display:flex;flex-direction:column;align-items:flex-start;font:16px/1.5 var(--sans,'DM Sans',Arial,sans-serif);color:var(--ink,#303732)}.ds-link{display:flex;align-items:center;min-height:44px;padding:4px 0;color:inherit;background:none;border:0;font:inherit;text-decoration:none;cursor:pointer}.ds-link:hover{text-decoration:underline;text-underline-offset:5px}.ds-link:focus-visible{outline:2px solid var(--accent,#365a45);outline-offset:5px}.ds-selected{display:block;text-align:left;width:100%;line-height:1.4;color:var(--accent,#365a45);text-decoration:underline;text-underline-offset:4px}.ds-topic{display:block;font-size:14px;color:var(--muted,#656b66);margin-top:2px}"
+    },
+    {
+      "name": "Missing study material",
+      "kind": "custom",
+      "description": "Quiet separator and honest missing-material notice.",
+      "html": "<div class=\"ds-placeholder\"><b>Slides not added yet</b><p>The slide deck has not been added yet.</p></div>",
+      "css": ".ds-placeholder{font:14px/1.5 var(--sans,\"DM Sans\",Arial,sans-serif);color:var(--ink,#303732);padding-top:20px;border-top:1px solid var(--line,#b9bcb6);margin-top:28px}.ds-placeholder b{font-weight:500}.ds-placeholder p{color:var(--muted,#656b66);margin-top:6px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Paper Collection",
+    "overview": "A quiet sheet of lightly folded paper holds restrained typography and supplied tea illustrations. The world stays sparse and tactile: text gives clear routes into the studies while integrated vessel artwork supplies its character.\n\nThe confirmed replacement world uses the owner's minimal paper reference and existing artwork. Product truth remains in PRODUCT.md; the first-viewport placement contract remains in .impeccable/direction.md.",
+    "keyCharacteristics": [
+      "Lightly folded paper with muted ink.",
+      "Small identity typography and generous open space.",
+      "Supplied illustrations with integrated company marks.",
+      "Text and illustrated objects share accessible study navigation."
+    ],
+    "rules": [
+      {
+        "name": "The Paper Continuity Rule",
+        "body": "Keep the paper background present when the collection becomes a reading panel.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do use supplied artwork and preserve the original bowl identity asset.",
+      "Do keep secondary navigation and topic labels readable at 14px or larger.",
+      "Do keep contact and deliverable placeholders explicit until real materials arrive.",
+      "Do honor reduced motion and preserve keyboard access."
+    ],
+    "donts": [
+      "Don't add the rejected hero, equal card grid, search box, pills, porcelain border, or ornamental footer to this collection.",
+      "Don't invent contact destinations, results, scores, or deliverables.",
+      "Don't treat decorative scattered objects as interactive controls."
+    ]
+  }
+}

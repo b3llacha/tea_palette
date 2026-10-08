@@ -1,10 +1,10 @@
 # Tea Palette
 
-Bella Cha’s consumer product case study portfolio. Cream paper, blue porcelain drawings, searchable studies, and an illustrated border follow the user-supplied visual reference. Supplied artwork defines the visual identity.
+Bella Cha’s consumer product case study portfolio. The latest owner-supplied reference determines the design: lightly folded paper, quiet text navigation, top-right Tea Palette branding, scattered tea objects, and bottom-right copyright.
 
-## Local preview and build
+## Run and build
 
-Requires Node.js 18 or newer. No dependencies to install.
+Requires Node.js 18 or newer; no package installation needed.
 
 ```sh
 npm run dev
@@ -12,22 +12,16 @@ npm test
 npm run build
 ```
 
-Open http://localhost:5173. Deploy the contents of `dist/` to a static host. Fonts and artwork are self-hosted; the page does not require external requests. The local preview only serves site files and assets, rejects traversal and unsupported methods, and supports HEAD and conditional caching. Configure equivalent security headers at the deployment host.
+Open http://localhost:5173. Deploy dist/ to a static host. Artwork and fonts are self-hosted; no external runtime requests are required. The local server only serves site files and assets, rejects traversal and unsupported methods, and supports HEAD and conditional caching. Configure equivalent security headers at the deployment host.
 
-## Content and navigation
+## Navigation and materials
 
-Search accepts product names and topics, including “Disney Plus,” punctuation and accented text. A clear button and “Show all four studies” recover from empty results. Opening a study focuses its heading. Previous/next navigation includes all four studies, even when the home collection was filtered; returning restores that filter. Back to studies or Escape returns focus to the originating control. About Bella contains the six earlier supplied reference images. Contact has explicit placeholders for LinkedIn, email, and résumé.
+Select a study in the text index or through its branded cup. Both open the same inline reading panel. Previous/next navigate all four studies; Back to collection or Escape restores the originating focus. Hover/focus on an index entry cues its corresponding cup. About contains Bella’s introduction and the six earlier reference images. Email and LinkedIn open explicit contact placeholders until real destinations are supplied. Final Beli/Duolingo slides, Disney+/TruFru redesigns, and résumé also remain placeholders. No scores, results, or contact details have been invented.
 
-Beli and Duolingo slide decks and Disney+ and TruFru redesign prototypes remain placeholders until the user provides final materials. No scores, outcomes, or external links have been invented.
+## Artwork
 
-## Asset optimization
+Original supplied sheets remain in assets. Optimized crops are in assets/optimized. The paper texture is a clean patch of the latest supplied reference. Tea bags, leaves, the honey wand, strainer, and tin are from the earlier supplied green sheet. Company logos are integrated into finished vessel images in assets/components; the Disney+ cup was edited to remove its watermark and center the logo in a transparent WebP. The site icon remains the original blue porcelain bowl. See assets/logos/SOURCES.md and assets/optimized/PAPER-SOURCES.md for sources.
 
-Original supplied images stay in `assets/`. Cropped WebP copies are in `assets/optimized/`: the porcelain reference provides three vessels, the mark, search ornament, and footer border; the tea illustration provides the fourth vessel. Gallery thumbnails retain all six earlier supplied references. The build copies only optimized images and fonts.
+The layout adapts to a compact index and re-composed scattered table on mobile. It allows vertical scrolling where needed. Keyboard focus, reduced-motion preferences, long reading content, and missing materials are accounted for. Local desktop/mobile checks do not substitute for a physical-device or full cross-browser test.
 
-Home artwork decreased from 1,905,099 bytes of source screenshots to 80,150 bytes of derivatives: 95.8% fewer image bytes. This is an asset measurement, not a claim about network timing or Web Vitals. The static build is approximately 348KB including fonts, licenses, all gallery thumbnails, and code.
-
-Impeccable’s optimize, clarify, colorize, animate, and harden guidance informed the refinement. See DESIGN.md for palette, motion, and the user-authorized cream background exception. Verified desktop and mobile layouts, search/recovery, focus return, study navigation, About/Contact panels, image loading, and server request handling. Reduced-motion behavior is implemented; physical-device and cross-browser testing remain outside this local pass.
-
-## Branded vessels
-
-Individual vessels use the newer owner-supplied green tea sheet and colorful cup sheet, with official company marks integrated on each ceramic face. The Disney+ cup was edited with the image-editing tool to clean the watermark and center the mark; its edited PNG source is retained in assets, and the transparent WebP ships from assets/components. Original sheets stay in assets; optimized crops and self-hosted logos ship in the build. The Disney+ porcelain bowl remains the site icon. Logo sources are recorded in assets/logos/SOURCES.md. Earlier asset measurements describe the initial porcelain version.
+Product facts, visual tokens, and the latest composition contract are recorded in PRODUCT.md, DESIGN.md, and .impeccable/direction.md.
