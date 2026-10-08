@@ -3,42 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Tea Palette by Bella Cha. A cabinet of consumer product design case studies, steeped in curiosity and refined with intention.">
-  <meta name="theme-color" content="#f5f1e7">
+  <meta name="description" content="Tea Palette by Bella Cha. A collection of consumer product design case studies, steeped in curiosity and refined with intention.">
+  <meta name="theme-color" content="#fcf4ed">
   <title>Tea Palette | Refining Taste in Consumer Products: A Case Study Portfolio</title>
 
   <link rel="stylesheet" href="styles.css">
   <script src="app.js" defer></script>
 </head>
-<body>
-  <a class="skip" href="#cabinet">Skip to the tea collection</a>
-  <header>
-    <button class="brand" data-home aria-label="Tea Palette home"><span class="source-teacup" aria-hidden="true"></span><span>tea palette</span><span class="brand-star">✳</span></button>
-    <span class="header-caption">REFINING TASTE IN CONSUMER PRODUCTS</span>
-    <button class="about-link" id="about-button" aria-pressed="false">About Bella <span>↗</span></button>
-  </header>
-  <main>
-    <section class="collection" aria-label="Tea cabinet case study collection">
-      <div class="collection-heading"><p class="eyebrow">THE TEA CABINET</p><span>01 — 04</span></div>
-      <div class="cabinet-stage">
-        <span class="cabinet-note">a shelf full of fresh perspectives <span>↙</span></span>
-        <div class="cabinet" id="cabinet" tabindex="-1">
-          <div class="rack-crop"><img class="rack-source" src="assets/cabinet-reference.png" alt="Watercolor wooden tea cabinet with a blue vase, teapot, white cups, and glass jars"></div>
-          <button class="vessel disney" data-case="disney" aria-label="Open Disney Plus case study" aria-pressed="false" aria-controls="detail-panel"><span class="vessel-label"><b>Disney+</b><small>02 · content discovery</small><i>↗</i></span></button>
-          <button class="vessel beli" data-case="beli" aria-label="Open Beli case study" aria-pressed="false" aria-controls="detail-panel"><span class="vessel-label"><b>Beli</b><small>01 · discovery & ranking</small><i>↗</i></span></button>
-          <button class="vessel duolingo" data-case="duolingo" aria-label="Open Duolingo case study" aria-pressed="false" aria-controls="detail-panel"><span class="vessel-label"><b>Duolingo</b><small>03 · onboarding & learning</small><i>↗</i></span></button>
-          <button class="vessel trufru" data-case="trufru" aria-label="Open TruFru case study" aria-pressed="false" aria-controls="detail-panel"><span class="vessel-label"><b>TruFru</b><small>04 · brand & shopping</small><i>↗</i></span></button>
-        </div>
-        <p class="shelf-instruction">Choose a tea. Take a closer look.</p>
-        <div class="street-sketch" role="img" aria-label="Hand-drawn London streetscape"></div>
-      </div>
-    </section>
-    <aside class="detail-panel" id="detail-panel" aria-label="Portfolio introduction and case studies">
-      <div class="panel-toolbar" hidden><button id="back-button">← The cabinet</button><div class="study-navigation"><button id="previous-button" aria-label="Previous case study">←</button><span id="case-counter"></span><button id="next-button" aria-label="Next case study">→</button></div></div>
-      <div id="panel-content"></div>
-    </aside>
-  </main>
-  <footer><div class="landscape-strip" aria-hidden="true"></div><span>Bella Cha <i>·</i> A case study portfolio</span><span class="footer-note">Thoughtfully brewed. Carefully refined.</span><span class="contact-note">LinkedIn · Email · Résumé <small>coming soon</small></span></footer>
-  <div class="sr-only" id="announcement" aria-live="polite" aria-atomic="true"></div>
-</body>
-</html>
+<body data-view="home">
+<a class="skip" href="#collection">Skip to case studies</a>
+<header><button class="brand" data-home aria-label="Tea Palette home"><span class="porcelain-mark" aria-hidden="true"></span><span>tea palette</span></button><nav aria-label="Main navigation"><button data-home>Case studies</button><button id="about-button" aria-pressed="false">Our story</button><button id="contact-button">Say hello</button></nav></header>
+<main>
+<section class="collection" id="collection" aria-label="Case study collection">
+ <div class="collection-heading"><h1>Refining taste.</h1><p>Consumer product design, thoughtfully reconsidered.</p><label class="search"><span class="sr-only">Search case studies</span><input id="study-search" type="search" placeholder="Find a product or a fresh perspective…"><span aria-hidden="true">⌕</span></label></div>
+ <div class="tea-grid">
+ <article class="tea-card" data-key="beli"><button class="vessel" data-case="beli" aria-label="Open Beli case study" aria-pressed="false" aria-controls="detail-panel"><span class="porcelain-art pot" role="img" aria-label="Hand-drawn blue floral teapot"></span><span class="outline-label">Explore Beli</span></button><p>Discover, rank, and remember<br>a great meal.</p><small>DISCOVERY & RANKING</small></article>
+ <article class="tea-card" data-key="disney"><button class="vessel" data-case="disney" aria-label="Open Disney Plus case study" aria-pressed="false" aria-controls="detail-panel"><span class="porcelain-art bowl" role="img" aria-label="Hand-drawn blue floral tea bowl"></span><span class="outline-label">Explore Disney+</span></button><p>A little more magic.<br>A clearer path to watching.</p><small>CONTENT DISCOVERY</small></article>
+ <article class="tea-card" data-key="duolingo"><button class="vessel" data-case="duolingo" aria-label="Open Duolingo case study" aria-pressed="false" aria-controls="detail-panel"><span class="porcelain-art cups" role="img" aria-label="Three hand-drawn blue floral cups"></span><span class="outline-label">Explore Duolingo</span></button><p>Small steps toward<br>a world of possibility.</p><small>ONBOARDING & LEARNING</small></article>
+ <article class="tea-card" data-key="trufru"><button class="vessel" data-case="trufru" aria-label="Open TruFru case study" aria-pressed="false" aria-controls="detail-panel"><span class="porcelain-art botanical" role="img" aria-label="Botanical teapot from the supplied tea drawings"></span><span class="outline-label">Explore TruFru</span></button><p>A playful product.<br>A more delightful experience.</p><small>BRAND & SHOPPING</small></article>
+ </div><p id="no-results" hidden>No studies found. Try Beli, Disney+, Duolingo, or TruFru.</p>
+ <p class="collection-blurb">Tea Palette by Bella Cha. Choose a tea to explore a product teardown and redesign.<br><span>Simplicity · Consistency · Usability</span></p>
+</section>
+<aside class="detail-panel" id="detail-panel" aria-label="Case study details" hidden><div class="panel-toolbar"><button id="back-button">← The collection</button><div class="study-navigation"><button id="previous-button" aria-label="Previous case study">←</button><span id="case-counter"></span><button id="next-button" aria-label="Next case study">→</button></div></div><div id="panel-content"></div></aside>
+</main>
+<footer><div class="porcelain-border" aria-hidden="true"></div><span>Bella Cha<br><small>LinkedIn · Email · Résumé — coming soon</small></span><button class="footer-brand" data-home><span class="porcelain-mark" aria-hidden="true"></span>tea palette</button><span class="footer-note">A fresh perspective<br>in every study.</span></footer><div class="sr-only" id="announcement" aria-live="polite" aria-atomic="true"></div>
+</body></html>

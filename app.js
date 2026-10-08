@@ -31,22 +31,15 @@ function showHome({ returnFocus = false } = {}) {
   selected = null;
   document.body.dataset.view = 'home';
   updateSelection();
-  toolbar.hidden = true;
-  render(`
-    <div class="reference-teapot" role="img" aria-label="Botanical teapot illustration"></div>
-    <p class="eyebrow">DESIGN TEARDOWNS, WITH TASTE</p>
-    <h1>A collection,<br> carefully <em>steeped.</em></h1>
-    <p class="panel-intro">Consumer product teardowns and redesign prototypes by Bella Cha. Familiar experiences, reconsidered through simplicity, consistency, and usability.</p>
-    <div class="how-to"><span class="symbol" aria-hidden="true">↖</span><p><b>Pick something from the shelf.</b> Each vessel holds a case study. Choose one to explore a fresh perspective on an everyday product.</p></div>
-    <div class="lenses" aria-label="Evaluation criteria"><span>SIMPLICITY</span><span>CONSISTENCY</span><span>USABILITY</span></div>
-    <div class="reference-collage"><div class="cafe-sketch" role="img" aria-label="Hand-drawn sidewalk café"></div><div class="framed-sketch" role="img" aria-label="Gallery of hand-drawn picture frames"></div><span>a little curiosity,<br>a lot of intention.</span></div>
-  `, 'Tea Palette introduction');
+  document.querySelector('#detail-panel').hidden = true;
+  document.querySelector('#announcement').textContent = 'Tea Palette case study collection';
   if (returnFocus && lastVessel) lastVessel.focus();
 }
 
 function showStudy(key) {
   const study = studies[key];
   selected = key;
+  document.querySelector('#detail-panel').hidden = false;
   document.body.dataset.view = 'study';
   lastVessel = vessels.find(button => button.dataset.case === key);
   updateSelection();
@@ -64,13 +57,14 @@ function showStudy(key) {
       <div><dt>The deliverable</dt><dd>${study.format}</dd></div>
     </dl>
     <div class="asset-placeholder"><span aria-hidden="true">▧</span><div><b>${study.format.includes('deck') ? 'Slide deck' : 'Redesign prototype'} coming soon</b><p>${study.status}</p></div></div>
-  `, `${study.name} case study selected. Details are shown beside the cabinet.`);
+  `, `${study.name} case study selected. Details are shown beside the collection.`);
 }
 
 function showAbout() {
   selected = null;
   updateSelection();
   document.body.dataset.view = 'about';
+  document.querySelector('#detail-panel').hidden = false;
   aboutButton.setAttribute('aria-pressed', 'true');
   toolbar.hidden = false;
   document.querySelector('.study-navigation').hidden = true;
@@ -79,6 +73,7 @@ function showAbout() {
     <h2 class="about-title">Hi, I’m Bella Cha.<br>A taste for the <em>thoughtful.</em></h2>
     <p class="panel-intro">I look closely at the consumer products we use every day, turning design teardowns into focused redesign proposals and full prototypes.</p>
     <p class="panel-intro">I break down onboarding, information hierarchy, and workflows using a score matrix across simplicity, consistency, and usability. My Beli proposal was delivered directly to their product team.</p>
+    <div class="reference-gallery" aria-label="The visual palette"><img src="assets/cabinet-reference.png" alt="Watercolor tea cabinet"><img src="assets/tea-reference.png" alt="Tea drawings"><img src="assets/cafe-reference.png" alt="Sidewalk café sketch"><img src="assets/book-reference.png" alt="Illustrated London book cover"><img src="assets/frames-reference.jpeg" alt="Hand-drawn gallery frames"><img src="assets/landscape-reference.png" alt="Illustrated landscape"></div>
     <div class="about-contacts" aria-label="Contact links coming soon"><span>LinkedIn<small>coming soon</small></span><span>Email<small>coming soon</small></span><span>Résumé<small>coming soon</small></span></div>
   `, 'About Bella Cha');
 }
@@ -91,5 +86,18 @@ document.querySelector('#previous-button').addEventListener('click', () => showS
 document.querySelector('#next-button').addEventListener('click', () => showStudy(order[(order.indexOf(selected) + 1) % 4]));
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && (selected || aboutButton.getAttribute('aria-pressed') === 'true')) showHome({ returnFocus: true });
+});
+document.querySelector('#contact-button').addEventListener('click', showAbout);
+const search = document.querySelector('#study-search');
+search.addEventListener('input', () => {
+  const query = search.value.trim().toLowerCase();
+  let visible = 0;
+  document.querySelectorAll('.tea-card').forEach(card => {
+    const study = studies[card.dataset.key];
+    const match = `${study.name} ${study.focus} ${study.intro}`.toLowerCase().includes(query);
+    card.hidden = !match;
+    if (match) visible++;
+  });
+  document.querySelector('#no-results').hidden = visible !== 0;
 });
 showHome();
