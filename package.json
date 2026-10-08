@@ -1,1 +1,14 @@
-{"name":"tea-palette","version":"1.0.0","private":true,"scripts":{"dev":"node server.mjs","start":"node server.mjs","build":"node build.mjs"},"engines":{"node":">=18"}}
+{
+  "name": "tea-palette",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "build": "node build.mjs",
+    "test": "node --test server.test.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
