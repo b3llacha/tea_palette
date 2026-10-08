@@ -8,3 +8,5 @@ Used to identify subjects of independent product design case studies. Downloaded
 - TruFru: https://trufru.com — inline horizontal header logo.
 
 The cups are crops of artwork supplied by the portfolio owner. Company marks identify the products being studied and do not imply affiliation or endorsement.
+
+Transparent marks: Disney+ uses its official landing-page wordmark; Beli retains the official mark with white converted to alpha in an SVG filter; Duolingo uses the 2019 wordmark sourced from Duolingo and archived at https://commons.wikimedia.org/wiki/File:Duolingo_logo_(2019).svg. TruFru uses its inline header wordmark.

@@ -21,3 +21,5 @@ The Impeccable manual detector reported one warning: cream/beige background. Thi
 The Disney+ study’s supplied porcelain bowl is also the site mark in the header, footer, and browser tab, as requested by the user.
 
 The four study vessels now use individual crops from the user’s colorful cup sheet (Disney+, TruFru) and green tea sheet (Beli, Duolingo). Official company logo assets are positioned on the front of each vessel. The original Disney+ porcelain bowl remains the site icon. Source artwork is preserved without generated replacement illustrations.
+
+Logos are transparent, unbacked marks with zero rotation, positioned at the center of each vessel’s front face. App-icon tiles and cream medallions have been removed.
