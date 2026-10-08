@@ -27,3 +27,7 @@ Original supplied images stay in `assets/`. Cropped WebP copies are in `assets/o
 Home artwork decreased from 1,905,099 bytes of source screenshots to 80,150 bytes of derivatives: 95.8% fewer image bytes. This is an asset measurement, not a claim about network timing or Web Vitals. The static build is approximately 348KB including fonts, licenses, all gallery thumbnails, and code.
 
 Impeccable’s optimize, clarify, colorize, animate, and harden guidance informed the refinement. See DESIGN.md for palette, motion, and the user-authorized cream background exception. Verified desktop and mobile layouts, search/recovery, focus return, study navigation, About/Contact panels, image loading, and server request handling. Reduced-motion behavior is implemented; physical-device and cross-browser testing remain outside this local pass.
+
+## Branded vessels
+
+Individual vessels use the newer owner-supplied green tea sheet and colorful cup sheet, with official company marks positioned on each ceramic face. Original sheets stay in assets; optimized crops and self-hosted logos ship in the build. The Disney+ porcelain bowl remains the site icon. Logo sources are recorded in assets/logos/SOURCES.md. Earlier asset measurements describe the initial porcelain version.

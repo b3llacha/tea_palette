@@ -15,3 +15,12 @@ body:not([data-view=home]) main{grid-template-columns:minmax(0,1fr) minmax(0,1.1
 
 .search input::placeholder{color:var(--muted);opacity:1}
 @media(max-width:760px){.bowl img{max-height:100%}.botanical img{max-height:100%}}
+
+/* Logos live on each vessel; positions follow the supplied drawing's front face. */
+.branded-art{mix-blend-mode:normal}.ceramic{position:relative;display:block;height:100%;max-width:100%;aspect-ratio:320/292}
+.porcelain-art .cup-art{display:block;width:100%;height:100%;max-width:100%;object-fit:contain;filter:brightness(1.25);mix-blend-mode:multiply}
+.cup-brand{position:absolute;left:43%;top:65%;transform:translate(-50%,-50%) rotate(-3deg);display:flex;align-items:center;justify-content:center;width:33%;height:28%;border-radius:45%;background:var(--paper);padding:5%}
+.porcelain-art .cup-brand img{display:block;width:100%;height:100%;object-fit:contain;filter:none;max-width:100%}
+[data-key=disney] .ceramic{aspect-ratio:320/231}[data-key=disney] .cup-brand{left:41%;top:61%;width:29%;height:38%;padding:2%;border-radius:28%;transform:translate(-50%,-50%) rotate(3deg)}
+[data-key=duolingo] .ceramic{aspect-ratio:320/288}[data-key=duolingo] .cup-brand{left:39%;top:49%;width:33%;height:36%;padding:0;border-radius:20%;overflow:hidden;transform:translate(-50%,-50%) rotate(-2deg)}
+[data-key=trufru] .ceramic{aspect-ratio:320/304}[data-key=trufru] .cup-brand{left:39%;top:57%;width:49%;height:35%;padding:3%;transform:translate(-50%,-50%) rotate(-5deg)}
