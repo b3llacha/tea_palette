@@ -23,3 +23,5 @@ The Disney+ study’s supplied porcelain bowl is also the site mark in the heade
 The four study vessels now use individual crops from the user’s colorful cup sheet (Disney+, TruFru) and green tea sheet (Beli, Duolingo). Official company logo assets are positioned on the front of each vessel. The original Disney+ porcelain bowl remains the site icon. Source artwork is preserved without generated replacement illustrations.
 
 Logos are transparent, unbacked marks with zero rotation, positioned at the center of each vessel’s front face. App-icon tiles and cream medallions have been removed.
+
+Each branded vessel is now a self-contained SVG image in assets/components, with original cup artwork and company mark embedded. Mark placement is centered on the ceramic body (excluding its handle and spout), in the original image coordinates. There are no positioned logo elements in the page.
