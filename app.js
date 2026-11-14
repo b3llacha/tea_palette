@@ -1,6 +1,6 @@
 const studies={
 beli:{name:'Beli',label:'Discovery & ranking',intro:'Rethinking how we discover, rank, and remember a great meal.',focus:'Restaurant discovery and ranking',format:'Competitive analysis, annotated prototypes, and a proposal deck',description:'This study examines the discovery and ranking experience in Beli. The redesign proposal packages competitive analysis and annotated prototypes into a pitch for specific improvements.',questions:['How can discovery help people find restaurants that fit their taste?','How can ranking interactions be clearer and easier to navigate?'],status:'The slide deck has not been added yet.'},
-disney:{name:'Disney+',label:'Content discovery',intro:'Bringing a little more magic to the path from browsing to watching.',focus:'Information hierarchy and browsing workflows',format:'Website redesign prototype',description:'A consumer product teardown and website redesign exploring how the structure of a streaming experience can support clearer content discovery.',questions:['Does the information hierarchy help viewers decide what to watch?','How can a browsing workflow make the next step feel clear?'],status:'The redesign prototype has not been added yet.'},
+disney:{name:'Disney+',label:'Content discovery',intro:'Bringing a little more magic to the path from browsing to watching.',focus:'Information hierarchy and browsing workflows',format:'Website redesign prototype',description:'A consumer product teardown and website redesign exploring how the structure of a streaming experience can support clearer content discovery.',questions:['Does the information hierarchy help viewers decide what to watch?','How can a browsing workflow make the next step feel clear?'],status:'',prototype:'https://www.figma.com/proto/T1g9Hy4NG8G2H6uLi8SseN/Tea-Palette_Disney-Plus?node-id=0-1',original:{src:'assets/disney-redesign/original-landing.webp',width:1000,height:6740,caption:'Original Disney+ landing page',alt:'Full-page screenshot of the original Disney+ landing page: a hero banner, new releases from Disney+ and Hulu, a Top 10 row, a character quiz, plan cards, ESPN and HBO Max bundle promotions, feature tiles, an FAQ, and the footer.'}},
 duolingo:{name:'Duolingo',label:'Onboarding & learning',intro:'Exploring the balance between motivation, clarity, and learning.',focus:'Onboarding, consistency, and learning workflows',format:'Design analysis and slide deck',description:'A design teardown examining the experience of getting started and navigating a learning product through simplicity, consistency, and usability.',questions:['How clearly does onboarding introduce the learning experience?','How do interaction patterns help people understand their progress?'],status:'',deck:'Gamification UX research slide deck',slides:[
   'Title — How Gamification Drives Sustained User Engagement',
   'Context — Millions of people now learn a language on an app instead of in a classroom',
@@ -42,6 +42,7 @@ function render(markup, message, focus = true) {
   if (focus) content.querySelector('h2').focus({preventScroll:true});
 }
 const sidebarCup = document.querySelector('#sidebar-cup');
+const studyVisual = document.querySelector('#study-visual');
 function updateSelection() {
   // The open study's cup rests under the work index.
   const cup = selected && document.querySelector(`.vessel[data-case="${selected}"] img`);
@@ -56,6 +57,7 @@ function showHome({ returnFocus = false } = {}) {
   document.body.dataset.view = 'home';
   delete document.body.dataset.study;
   panel.hidden = true;
+  studyVisual.hidden = true;
   updateSelection();
 
   announce('Tea Palette case study collection');
@@ -63,6 +65,7 @@ function showHome({ returnFocus = false } = {}) {
 }
 function openPanel(view, origin) {
   if (origin) returnTarget = origin;
+  if (view !== 'study') studyVisual.hidden = true;
   document.body.dataset.view = view;
   panel.hidden = false;
   document.querySelector('.study-navigation').hidden = view !== 'study';
@@ -81,8 +84,15 @@ function showStudy(key, origin, focus = true) {
     <p class="case-subtitle">${escapeHTML(study.intro)}</p>
     <p class="case-description">${escapeHTML(study.description)}</p>
     <dl class="case-facts"><div><dt>Focus</dt><dd>${escapeHTML(study.focus)}</dd></div><div><dt>Deliverable</dt><dd>${escapeHTML(study.format)}</dd></div></dl>
-    ${study.slides ? deckMarkup(study) : `<div class="asset-placeholder"><b>${deck ? 'Slides' : 'Prototype'} not added yet</b><p>${escapeHTML(study.status)}</p></div>`}`, `${study.name} study opened.`, focus);
+    ${study.prototype ? `<div class="prototype-link"><b>Redesign prototype</b><p><a href="${escapeHTML(study.prototype)}" target="_blank" rel="noopener noreferrer">Open the Figma prototype <span aria-hidden="true">↗</span><span class="sr-only"> (opens in a new tab)</span></a></p></div>` :
+     study.slides ? deckMarkup(study) : `<div class="asset-placeholder"><b>${deck ? 'Slides' : 'Prototype'} not added yet</b><p>${escapeHTML(study.status)}</p></div>`}`, `${study.name} study opened.`, focus);
   if (study.slides) setupDeck(key, study.slides);
+  // A study's original screen sits on the left, where the tea table usually is.
+  studyVisual.hidden = !study.original;
+  if (study.original) {
+    const {src, width, height, caption, alt} = study.original;
+    studyVisual.innerHTML = `<figcaption>${escapeHTML(caption)}</figcaption><div class="study-visual-scroll" tabindex="0" aria-label="${escapeHTML(caption)}, scrollable"><img src="${src}" width="${width}" height="${height}" alt="${escapeHTML(alt)}" decoding="async"></div>`;
+  } else studyVisual.innerHTML = '';
 }
 const slideSrc = (key, index) => `assets/${key}-deck/slide-${String(index+1).padStart(2,'0')}.webp`;
 function deckMarkup(study) {
