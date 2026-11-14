@@ -16,7 +16,7 @@ Open http://localhost:5173. Deploy dist/ to a static host. Artwork and fonts are
 
 ## Navigation and materials
 
-Select a study in the text index or through its branded cup. Both open the same inline reading panel. Previous/next navigate all four studies; Back to collection or Escape restores the originating focus. Hover/focus on an index entry cues its corresponding cup. About contains Bella’s introduction and the six earlier reference images. Email and LinkedIn open explicit contact placeholders until real destinations are supplied. The Duolingo study shows Bella’s gamification research deck as a slide carousel (assets/duolingo-deck). The Disney+ study links to Bella’s Figma redesign prototype and shows the original Disney+ landing page on the left (assets/disney-redesign). The final Beli slides, TruFru redesign, and résumé remain placeholders. No scores, results, or contact details have been invented.
+Select a study in the text index or through its branded cup. Both open the same inline reading panel. Previous/next navigate all four studies; Back to collection or Escape restores the originating focus. Hover/focus on an index entry cues its corresponding cup. About contains Bella’s introduction and the six earlier reference images. Email and LinkedIn open explicit contact placeholders until real destinations are supplied. The Duolingo study shows Bella’s gamification research deck as a slide carousel (assets/duolingo-deck). The Disney+ study links to Bella’s Figma redesign prototype and shows the Disney+ landing page on the left (assets/disney-redesign). The final Beli slides, TruFru redesign, and résumé remain placeholders. No scores, results, or contact details have been invented.
 
 ## Artwork
 
