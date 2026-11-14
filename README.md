@@ -20,7 +20,7 @@ Select a study in the text index or through its branded cup. Both open the same 
 
 ## Artwork
 
-Original supplied sheets remain in assets. Optimized crops are in assets/optimized. The paper texture is a clean patch of the latest supplied reference. Tea bags, leaves, the honey wand, strainer, and tin are from the earlier supplied green sheet. Company logos are integrated into finished vessel images in assets/components; the Disney+ cup was edited to remove its watermark and center the logo in a transparent WebP. The site icon remains the original blue porcelain bowl. See assets/logos/SOURCES.md and assets/optimized/PAPER-SOURCES.md for sources.
+Original supplied sheets remain in assets. Optimized crops are in assets/optimized. The paper texture is a clean patch of the latest supplied reference. Tea bags, leaves, the honey wand, strainer, and tin are from the earlier supplied green sheet. Company logos are integrated into finished vessel images in assets/components; the Disney+ cup was edited to remove its watermark and center the logo in a transparent WebP. The site icon is the porcelain bowl, recolored green to match the cups. The Disney+ cup and TruFru mug were recolored green (TruFru wordmark set in white for contrast) so every vessel shares one green palette. See assets/logos/SOURCES.md and assets/optimized/PAPER-SOURCES.md for sources.
 
 The layout adapts to a compact index and re-composed scattered table on mobile. It allows vertical scrolling where needed. Keyboard focus, reduced-motion preferences, long reading content, and missing materials are accounted for. Local desktop/mobile checks do not substitute for a physical-device or full cross-browser test.
 
