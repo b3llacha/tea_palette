@@ -164,8 +164,10 @@ function showAbout(origin) {
   openPanel('about', origin);
   render(`<h2 class="about-title" tabindex="-1">Hi, I’m Bella Cha.<br>A taste for the <em>thoughtful.</em></h2>
     <p class="panel-intro">I look closely at the consumer products we use every day, turning design teardowns into focused redesign proposals and full prototypes.</p>
-    <p class="panel-intro">I break down onboarding, information hierarchy, and workflows using a score matrix across simplicity, consistency, and usability.</p>
-    <img class="about-photo" src="assets/about/bella.webp" width="720" height="933" alt="Bella Cha smiling at an outdoor café table" decoding="async">`, 'About Bella Cha opened.');
+    <p class="panel-intro">I break down onboarding, information hierarchy, and workflows using a score matrix across simplicity, consistency, and usability.</p>`, 'About Bella Cha opened.');
+  studyVisual.dataset.kind = 'photo';
+  studyVisual.innerHTML = '<img class="about-photo" src="assets/about/bella.webp" width="720" height="933" alt="Bella Cha smiling at an outdoor café table" decoding="async">';
+  studyVisual.hidden = false;
 }
 function showContact(origin) {
   selected = null;
