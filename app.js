@@ -1,7 +1,22 @@
 const studies={
 beli:{name:'Beli',label:'Discovery & ranking',intro:'Rethinking how we discover, rank, and remember a great meal.',focus:'Restaurant discovery and ranking',format:'Competitive analysis, annotated prototypes, and a proposal deck',description:'This study examines the discovery and ranking experience in Beli. The redesign proposal packages competitive analysis and annotated prototypes into a pitch for specific improvements.',questions:['How can discovery help people find restaurants that fit their taste?','How can ranking interactions be clearer and easier to navigate?'],status:'The slide deck has not been added yet.'},
 disney:{name:'Disney+',label:'Content discovery',intro:'Bringing a little more magic to the path from browsing to watching.',focus:'Information hierarchy and browsing workflows',format:'Website redesign prototype',description:'A consumer product teardown and website redesign exploring how the structure of a streaming experience can support clearer content discovery.',questions:['Does the information hierarchy help viewers decide what to watch?','How can a browsing workflow make the next step feel clear?'],status:'The redesign prototype has not been added yet.'},
-duolingo:{name:'Duolingo',label:'Onboarding & learning',intro:'Exploring the balance between motivation, clarity, and learning.',focus:'Onboarding, consistency, and learning workflows',format:'Design analysis and slide deck',description:'A design teardown examining the experience of getting started and navigating a learning product through simplicity, consistency, and usability.',questions:['How clearly does onboarding introduce the learning experience?','How do interaction patterns help people understand their progress?'],status:'The slide deck has not been added yet.'},
+duolingo:{name:'Duolingo',label:'Onboarding & learning',intro:'Exploring the balance between motivation, clarity, and learning.',focus:'Onboarding, consistency, and learning workflows',format:'Design analysis and slide deck',description:'A design teardown examining the experience of getting started and navigating a learning product through simplicity, consistency, and usability.',questions:['How clearly does onboarding introduce the learning experience?','How do interaction patterns help people understand their progress?'],status:'',deck:'Gamification UX research slide deck',slides:[
+  'Title — How Gamification Drives Sustained User Engagement',
+  'Context — Millions of people now learn a language on an app instead of in a classroom',
+  'Approach — Research approach: literature review, competitive teardown, thematic synthesis',
+  'Framework — Sustained engagement comes down to three gamification mechanics',
+  'Finding 01 — Loss-averse rewards keep users coming back',
+  'Finding 02 — Visible progress turns practice into momentum',
+  'Finding 03 — Immediate feedback shapes behavior in the moment',
+  'Finding 04 — Anywhere-access is a strength and a trade-off',
+  'Finding 05 — Personalized content is rich but not always accurate',
+  'Beyond gamification — Effectiveness isn’t uniform across every language domain',
+  'So what — Design implications',
+  'Conclusion — Rewards and progression drive engagement; feedback specificity is the growth edge',
+  'Thank you',
+  'Appendix — Sources'
+]},
 trufru:{name:'TruFru',label:'Brand & shopping',intro:'Translating a playful product into a clearer, more delicious digital experience.',focus:'Brand expression and information hierarchy',format:'Website redesign prototype',description:'A consumer product teardown and website redesign examining how product information and brand personality can work together in a digital experience.',questions:['How quickly can visitors understand the product and its appeal?','How can visual hierarchy make exploration more intuitive?'],status:'The redesign prototype has not been added yet.'}
 };
 
@@ -61,7 +76,51 @@ function showStudy(key, origin, focus = true) {
     <p class="case-subtitle">${escapeHTML(study.intro)}</p>
     <p class="case-description">${escapeHTML(study.description)}</p>
     <dl class="case-facts"><div><dt>Focus</dt><dd>${escapeHTML(study.focus)}</dd></div><div><dt>Deliverable</dt><dd>${escapeHTML(study.format)}</dd></div></dl>
-    <div class="asset-placeholder"><b>${deck ? 'Slides' : 'Prototype'} not added yet</b><p>${escapeHTML(study.status)}</p></div>`, `${study.name} study opened.`, focus);
+    ${study.slides ? deckMarkup(study) : `<div class="asset-placeholder"><b>${deck ? 'Slides' : 'Prototype'} not added yet</b><p>${escapeHTML(study.status)}</p></div>`}`, `${study.name} study opened.`, focus);
+  if (study.slides) setupDeck(key, study.slides);
+}
+const slideSrc = (key, index) => `assets/${key}-deck/slide-${String(index+1).padStart(2,'0')}.webp`;
+function deckMarkup(study) {
+  return `<section class="deck" aria-roledescription="carousel" aria-label="${escapeHTML(study.deck)}">
+    <h3>${escapeHTML(study.deck)}</h3>
+    <div class="deck-frame"><img class="deck-image" src="" alt="" width="1440" height="810" decoding="async"></div>
+    <div class="deck-controls">
+      <button type="button" data-step="-1" aria-label="Previous slide">← Previous</button>
+      <span class="deck-counter" aria-live="polite"></span>
+      <button type="button" data-step="1" aria-label="Next slide">Next →</button>
+    </div>
+  </section>`;
+}
+// Slide carousel: buttons, arrow keys while focus is inside, and swipe on touch screens.
+function setupDeck(key, slides) {
+  const deck = content.querySelector('.deck');
+  const image = deck.querySelector('.deck-image');
+  const counter = deck.querySelector('.deck-counter');
+  const [prev, next] = deck.querySelectorAll('[data-step]');
+  let index = 0;
+  const go = target => {
+    index = Math.max(0, Math.min(slides.length - 1, target));
+    image.src = slideSrc(key, index);
+    image.alt = `Slide ${index+1} of ${slides.length}: ${slides[index]}`;
+    counter.textContent = `${index+1} / ${slides.length}`;
+    prev.disabled = index === 0;
+    next.disabled = index === slides.length - 1;
+    for (const near of [index-1, index+1]) if (near >= 0 && near < slides.length) new Image().src = slideSrc(key, near);
+  };
+  deck.addEventListener('click', event => { const button = event.target.closest('[data-step]'); if (button) go(index + Number(button.dataset.step)); });
+  deck.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); go(index - 1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); go(index + 1); }
+  });
+  let startX = null;
+  image.addEventListener('touchstart', event => { startX = event.touches[0].clientX; }, {passive:true});
+  image.addEventListener('touchend', event => {
+    if (startX === null) return;
+    const distance = event.changedTouches[0].clientX - startX;
+    if (Math.abs(distance) > 40) go(index + (distance < 0 ? 1 : -1));
+    startX = null;
+  });
+  go(0);
 }
 function showAbout(origin) {
   selected = null;
