@@ -41,7 +41,12 @@ function render(markup, message, focus = true) {
   announce(message);
   if (focus) content.querySelector('h2').focus({preventScroll:true});
 }
+const sidebarCup = document.querySelector('#sidebar-cup');
 function updateSelection() {
+  // The open study's cup rests under the work index.
+  const cup = selected && document.querySelector(`.vessel[data-case="${selected}"] img`);
+  sidebarCup.hidden = !cup;
+  if (cup) { sidebarCup.src = cup.getAttribute('src'); sidebarCup.dataset.study = selected; }
   vessels.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.case === selected)));
   aboutButton.setAttribute('aria-pressed', String(document.body.dataset.view === 'about'));
   contactLinks.forEach(link => { if(document.body.dataset.view === 'contact') link.setAttribute('aria-current','page'); else link.removeAttribute('aria-current'); });
