@@ -1,5 +1,5 @@
 const studies={
-beli:{name:'Beli',label:'Discovery & ranking',intro:'Rethinking how we discover, rank, and remember a great meal.',focus:'Restaurant discovery and ranking',format:'Competitive analysis, annotated prototypes, and a proposal deck',description:'This study examines the discovery and ranking experience in Beli. The redesign proposal packages competitive analysis and annotated prototypes into a pitch for specific improvements.',questions:['How can discovery help people find restaurants that fit their taste?','How can ranking interactions be clearer and easier to navigate?'],status:'',deck:'Taste First — Beli onboarding case study deck',slides:[
+beli:{name:'Beli',centerCup:true,label:'Discovery & ranking',intro:'Rethinking how we discover, rank, and remember a great meal.',focus:'Restaurant discovery and ranking',format:'Competitive analysis, annotated prototypes, and a proposal deck',description:'This study examines the discovery and ranking experience in Beli. The redesign proposal packages competitive analysis and annotated prototypes into a pitch for specific improvements.',questions:['How can discovery help people find restaurants that fit their taste?','How can ranking interactions be clearer and easier to navigate?'],status:'',deck:'Taste First — Beli onboarding case study deck',slides:[
   'Title — Taste First: redesigning Beli’s onboarding around value before virality',
   'Project introduction — Reward the ranking, not just the recruiting',
   'Discover — Ranking comes first, the reward doesn’t',
@@ -17,7 +17,7 @@ beli:{name:'Beli',label:'Discovery & ranking',intro:'Rethinking how we discover,
   'Reflection — From growth prompt to product payoff'
 ]},
 disney:{name:'Disney+',label:'Content discovery',intro:'Bringing a little more magic to the path from browsing to watching.',focus:'Information hierarchy and browsing workflows',format:'Website redesign prototype',description:'A consumer product teardown and website redesign exploring how the structure of a streaming experience can support clearer content discovery.',questions:['Does the information hierarchy help viewers decide what to watch?','How can a browsing workflow make the next step feel clear?'],status:'',prototype:'https://www.figma.com/proto/T1g9Hy4NG8G2H6uLi8SseN/Tea-Palette_Disney-Plus?node-id=0-1',original:{src:'assets/disney-redesign/original-landing.webp',width:1000,height:6740,caption:'Disney+ landing page',alt:'Full-page screenshot of the Disney+ landing page: a hero banner, new releases from Disney+ and Hulu, a Top 10 row, a character quiz, plan cards, ESPN and HBO Max bundle promotions, feature tiles, an FAQ, and the footer.'}},
-duolingo:{name:'Duolingo',label:'Onboarding & learning',intro:'Exploring the balance between motivation, clarity, and learning.',focus:'Onboarding, consistency, and learning workflows',format:'Design analysis and slide deck',description:'A design teardown examining the experience of getting started and navigating a learning product through simplicity, consistency, and usability.',questions:['How clearly does onboarding introduce the learning experience?','How do interaction patterns help people understand their progress?'],status:'',deck:'Gamification UX research slide deck',slides:[
+duolingo:{name:'Duolingo',centerCup:true,label:'Onboarding & learning',intro:'Exploring the balance between motivation, clarity, and learning.',focus:'Onboarding, consistency, and learning workflows',format:'Design analysis and slide deck',description:'A design teardown examining the experience of getting started and navigating a learning product through simplicity, consistency, and usability.',questions:['How clearly does onboarding introduce the learning experience?','How do interaction patterns help people understand their progress?'],status:'',deck:'Gamification UX research slide deck',slides:[
   'Title — How Gamification Drives Sustained User Engagement',
   'Context — Millions of people now learn a language on an app instead of in a classroom',
   'Approach — Research approach: literature review, competitive teardown, thematic synthesis',
@@ -62,7 +62,7 @@ const studyVisual = document.querySelector('#study-visual');
 function updateSelection() {
   // The open study's cup rests under the work index.
   const cup = selected && document.querySelector(`.vessel[data-case="${selected}"] img`);
-  sidebarCup.hidden = !cup;
+  sidebarCup.hidden = !cup || Boolean(studies[selected]?.centerCup);
   if (cup) { sidebarCup.src = cup.getAttribute('src'); sidebarCup.dataset.study = selected; }
   vessels.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.case === selected)));
   aboutButton.setAttribute('aria-pressed', String(document.body.dataset.view === 'about'));
@@ -104,8 +104,12 @@ function showStudy(key, origin, focus = true) {
      study.slides ? deckMarkup(study) : `<div class="asset-placeholder"><b>${deck ? 'Slides' : 'Prototype'} not added yet</b><p>${escapeHTML(study.status)}</p></div>`}`, `${study.name} study opened.`, focus);
   if (study.slides) setupDeck(key, study.slides);
   // A study's original screen sits on the left, where the tea table usually is.
-  studyVisual.hidden = !study.original;
-  if (study.original) {
+  studyVisual.hidden = !study.original && !study.centerCup;
+  studyVisual.dataset.kind = study.original ? 'screen' : 'cup';
+  if (study.centerCup) {
+    const cup = document.querySelector(`.vessel[data-case="${key}"] img`);
+    studyVisual.innerHTML = `<img class="center-cup" src="${cup.getAttribute('src')}" alt="" aria-hidden="true">`;
+  } else if (study.original) {
     const {src, width, height, caption, alt} = study.original;
     studyVisual.innerHTML = `<figcaption>${escapeHTML(caption)}</figcaption><div class="study-visual-scroll" tabindex="0" aria-label="${escapeHTML(caption)}, scrollable"><img src="${src}" width="${width}" height="${height}" alt="${escapeHTML(alt)}" decoding="async"></div>`;
   } else studyVisual.innerHTML = '';
