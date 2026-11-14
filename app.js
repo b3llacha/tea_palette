@@ -170,7 +170,7 @@ function showContact(origin) {
   selected = null;
   delete document.body.dataset.study;
   openPanel('contact', origin);
-  render(`<h2 tabindex="-1">Connect with Bella.</h2><p class="panel-intro">Contact details will live here once they’re added.</p><dl class="contact-list"><div><dt>LinkedIn</dt><dd>Link not added yet</dd></div><div><dt>Email</dt><dd>Address not added yet</dd></div><div><dt>Résumé</dt><dd>File not added yet</dd></div></dl><p class="panel-intro">In the meantime, explore the four case study summaries.</p>`, 'Contact details opened.');
+  render(`<h2 tabindex="-1">Connect with Bella.</h2><p class="panel-intro">I’d love to hear from you.</p><dl class="contact-list"><div><dt>Email</dt><dd><a href="mailto:yeeun_cha@berkeley.edu">yeeun_cha@berkeley.edu</a></dd></div><div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/bellacha" target="_blank" rel="noopener noreferrer">linkedin.com/in/bellacha<span class="sr-only"> (opens in a new tab)</span></a></dd></div><div><dt>Portfolio</dt><dd><a href="https://b3llacha.com" target="_blank" rel="noopener noreferrer">b3llacha.com<span class="sr-only"> (opens in a new tab)</span></a></dd></div></dl>`, 'Contact details opened.');
 }
 vessels.forEach(button => button.addEventListener('click', () => showStudy(button.dataset.case, button)));
 document.querySelectorAll('[data-home]').forEach(button => button.addEventListener('click', () => showHome()));
